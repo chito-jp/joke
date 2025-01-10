@@ -1,1 +1,39 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>「あ」と「ほ」だけの変換</title>
+</head>
+<body>
+    <p>なんかの会話で、「あ」と「ほ」だけで会話できるんじゃないか、という会話になったのでそれを現実にするために作成したジョークサイトです。</p>
+    <h2>暗号化</h2>
+    <input type="text" id="encode">
+    <input type="text" id="encodeCopy" readonly>
+    <button id="copyBtn" onclick="copy(`encodeCopy`)">copy</button>
+    <h2>復号化</h2>
+    <input type="text" id="decode">
+    <input type="text" id="decodeCopy" readonly>
+    <button id="copyBtn" onclick="copy(`decodeCopy`)">copy</button>
+    <script>
+        function copy(id){
+            const target=document.getElementById(id);
+            target.select();
+            target.setSelectionRange(0, Infinity);
+            document.execCommand("copy");
+        }
+        const encodeInput=document.getElementById("encode");
+        const decodeInput=document.getElementById("decode");
+        const encodeCopy=document.getElementById("encodeCopy");
+        const decodeCopy=document.getElementById("decodeCopy");
+        encodeInput.addEventListener("input",()=>{
+            const str=encodeInput.value;
+            encodeCopy.value=str;
+        });
+        decodeInput.addEventListener("input",()=>{
+            const str=decodeInput.value;
+            decodeCopy.value=str;
+        });
+    </script>
+</body>
+</html>
