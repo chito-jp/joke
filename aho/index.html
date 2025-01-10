@@ -19,7 +19,7 @@
         function copy(id){
             const target=document.getElementById(id);
             target.select();
-            target.setSelectionRange(0, Infinity);
+            target.setSelectionRange(0, 99999);
             document.execCommand("copy");
         }
         const encodeInput=document.getElementById("encode");
