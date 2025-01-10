@@ -28,11 +28,17 @@
         const decodeCopy=document.getElementById("decodeCopy");
         encodeInput.addEventListener("input",()=>{
             const str=encodeInput.value;
-            encodeCopy.value=str;
+            
+            encodeCopy.value=[...str].map(char=>char.charCodeAt(0).toString(2).padStart(8, "0")).join(" ").replace(/0/g,"あ").replace(/1/g,"ほ");
         });
         decodeInput.addEventListener("input",()=>{
             const str=decodeInput.value;
-            decodeCopy.value=str;
+            decodeCopy.value=str
+            .replace(/あ/g,"0")
+            .replace(/ほ/g,"1")
+            .split(" ")
+            .map(_=>String.fromCharCode(parseInt(_,2)))
+           .join("");
         });
     </script>
 </body>
